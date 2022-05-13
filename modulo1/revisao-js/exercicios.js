@@ -102,7 +102,28 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
+    const menorValor = Math.min(...array)
+    const maiorValor = Math.max(...array)
+    let segundoMaior = 0
+    let segundoMenor = maiorValor
 
+    const retornaArray = []
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] < maiorValor && array[i] > segundoMaior) {
+            segundoMaior = array[i]
+        }
+    }
+    retornaArray.push(segundoMaior)
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] > menorValor && array[i] < segundoMenor) {
+            segundoMenor = array[i]
+        }
+    }
+    retornaArray.push(segundoMenor)
+
+    return retornaArray
 }
 
 // EXERCÍCIO 11
@@ -112,16 +133,16 @@ function retornaChamadaDeFilme(filme) {
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-    const pessoaAnonima = {...pessoa, nome: "ANÔNIMO"}
-    return pessoaAnonima   
+    const pessoaAnonima = { ...pessoa, nome: "ANÔNIMO" }
+    return pessoaAnonima
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
     const temPermissao = []
-    for(i=0; i < pessoas.length -1; i++) {
+    for (let i = 0; i < pessoas.length - 1; i++) {
         const atual = pessoas[i]
-        if(atual.altura >= 1.5 && atual.idade >14 && atual.idade <60) {
+        if (atual.altura >= 1.5 && atual.idade > 14 && atual.idade < 60) {
             temPermissao.push(atual)
         }
     }
@@ -138,15 +159,46 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    for (let i = 0; i < contas.length; i++) {
+        const atual = contas[i]
+        const somaCompras = atual.compras.reduce((valorAnterior, valorAtual) => valorAnterior + valorAtual, 0);
+        atual.saldoTotal = atual.saldoTotal - somaCompras
+        atual.compras = []
+    }
+    return contas
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-
+    consultas.sort(function (a, b) {
+        if (a.nome < b.nome) {
+            return -1
+        } else if (a.nome > b.nome) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+    return consultas
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
+    consultas.sort(function (a, b) {
+        const dataASeparados = a.dataDaConsulta.split("/")
+        const dataBSeparados = b.dataDaConsulta.split("/")
 
+        const dataA = new Date(dataASeparados[2], dataASeparados[1] - 1, dataASeparados[0])
+        const dataB = new Date(dataBSeparados[2], dataBSeparados[1] - 1, dataBSeparados[0])
+
+        if (dataA < dataB) {
+            return -1
+        } else if (dataA > dataB) {
+            return 1
+        } else {
+            return 0
+        }
+
+    })
+    return consultas
 }
