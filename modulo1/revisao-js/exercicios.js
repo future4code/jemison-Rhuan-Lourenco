@@ -23,7 +23,6 @@ function retornaArrayOrdenado(array) {
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-
     // const numerosPares = array.filter((numero) => {
     //     return numero % 2 === 0
     // })
@@ -48,9 +47,7 @@ function retornaNumerosParesElevadosADois(array) {
     const numerosElevadosADois = numerosPares.map((numero) => {
         return Math.pow(numero, 2);
     })
-
     return numerosElevadosADois
-
 }
 
 // EXERCÍCIO 06
@@ -137,6 +134,7 @@ function retornaPessoaAnonimizada(pessoa) {
     return pessoaAnonima
 }
 
+
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
     const temPermissao = []
@@ -148,6 +146,7 @@ function retornaPessoasAutorizadas(pessoas) {
     }
     return temPermissao
 }
+
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
