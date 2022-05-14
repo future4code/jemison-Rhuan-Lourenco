@@ -1,0 +1,34 @@
+1. TER ATENÇÃO NO ENUNCIADO
+Sempre ler o enunciado com atenção e caso não entenda ler novamente para poder identificar
+informações que são únicas de cada um dos enunciados e se perguntar o que o código deve fazer e como deve fazer.
+
+
+2. RETIRAR INFORMAÇÕES RELEVANTES
+No enunciado sempre vai ter informações relevantes, como por exemplo palavras chaves que vão servir como nome de 
+variáveis e também como o código pode serdividido. No caso os verbos poderão criar funções e se há alguma condição para que o código seja escrito.
+
+
+3. PENSAR ENTRADAS E SAÍDAS
+Aqui podemos pensar em quais são os dados de entrada e como esses dados serão recebidos, depois disso devemos pensar
+no que código precisa entregar e como as nossas funções devem ser criadas para receber as entradas e as saídas que foram pensadas anteriormente.
+
+
+4. FAZER UM ESQUEMA VISUAL
+Depois de visualizar todo o esquema de entradas e saídas pode ser mais facil montar diagramas, para que o código 
+que deve ser escrito fique mais visual, pensando em todos os possíveis inputs e outputs.
+Fazer um esquema visual fica mais fácil de enxergar melhor como o programa deve ser escrito.
+
+5. CRIAR CÓDIGO FEIO
+Nessa parte de criarmos o código é onde devemos escrever o que estamos pensando, devemos colocar as ideias pensadas
+no papel para resolver da melhor forma nosso problema, mesmo que o código fique grande ou bagunçado. 
+
+6. TESTAR FORÇA-BRUTA
+O importante aqui é colocar o programa pra funcionar. Devemos escrever o código com soluções obvias e de começo até
+fazer um escopo com nosso idioma, depois de melhorar o visual transcrever para a linguagem de programação em questão.
+
+
+7. REFATORAR
+Depois do cógido funcionando e atendendo os requisitos devemos nos preocupar em refatorar. É aonde procuramos melhorar
+a estética do nosso código, revendo nome de variaveis e funçoes, separando corretamente cada elemento, procurar por
+alguma solução que possa diminuir nosso código para melhorar desempenho.
+
