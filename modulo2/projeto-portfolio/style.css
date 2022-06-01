@@ -1,0 +1,124 @@
+body {
+    background-color: #40ba8d;
+    text-align: center;
+    margin: 0;
+    padding-top: 100px;
+}
+
+.header {
+    height: 100px;
+    background-color: #0d2440;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.cabecalho {
+    margin-top: 40px;
+}
+
+.links-paginas {
+    margin: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+#foto-rhuan {
+    width: 200px;
+    height: 200px;
+    border-radius: 500px;
+}
+
+.footer {
+    background-color: #0d2440;
+    color: white;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+#home-esquerda {
+    display: inline-block;
+    width: 65%;
+    text-align: justify;
+    font-size: 17px;
+}
+
+#home-direita {
+    display: inline-block;
+    width: 28%;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.foto-footer {
+    max-width: 25px;
+    margin-left: 30px;
+}
+
+.fotos-projetos {
+    width: 500px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+.sobre-projeto {
+    display: inline-block;
+    width: 50%;
+    text-align: justify;
+    margin: 50px 0;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.descricao-projeto {
+    display: inline-block;
+    width: 50%;
+    text-align: justify;
+}
+
+#skills-esquerda {
+    display: inline-block;
+    width: 49%;
+    text-align: justify;
+}
+
+#skills-direita {
+    display: inline-block;
+    width: 49%;
+    text-align: justify;
+}
+
+#skills, #portfolio, #formulario, #instituicoes {
+    text-align: left;
+    margin-top: 80px;
+    font-size: 17px;
+}
+
+#contato-formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    padding: 20px 50px;
+    background-color: #0d2440;
+    gap: 20px;
+}
+
+.imagem-index {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    margin-right: 100px;
+}
