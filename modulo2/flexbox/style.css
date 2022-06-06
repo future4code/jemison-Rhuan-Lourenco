@@ -1,0 +1,85 @@
+header {
+    padding: 0 20px 0 0;
+    display: flex;
+    background: mediumvioletred;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imagens {
+    width: 25px;
+    height: 25px;
+}
+
+footer {
+    background-color: mediumvioletred;
+    height: 50px;  
+    text-align: center;
+    width: 100%;
+    padding: 1px;
+}
+
+.navegador {
+    justify-content: space-between;
+    display: flex;
+    padding: 0 20px 0 20px;
+    align-items: center;
+    font-weight: bold;
+}
+
+#home-esquerda {
+    width: 20%;
+    background-color: #f2d0e0;
+}
+
+#home-direita {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    width: 80%;
+    gap: 16px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.produto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    box-shadow: 5px 5px 20px darkgrey;
+}
+
+.foto-bolo {
+    margin-left: 2px;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h4 {
+    font-size: 25px;
+}
+
+.produto > p {
+    font-size: 23px;
+    text-align: center;
+}
+
+header > div {
+    display: flex;
+    padding: 8px;
+    gap: 16px;
+    align-items: center;
+}
+
+.navegador > div {
+    display: flex;
+    padding: 8px;
+    gap: 16px;
+    align-items: center;
+}
