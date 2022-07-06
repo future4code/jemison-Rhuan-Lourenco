@@ -2,21 +2,27 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Container from './components/Container';
+import Input from "./components/Input";
+import { EnviarMensagem } from './components/Input/styled';
+import Button from './components/Button';
 
 function App() {
   return (
     <div className="App">
-      <header>
+
         <Header/>
-      </header>
 
       <main>
-        <Container/>
+        <Container>
+          <EnviarMensagem>
+            <Input label="Remetente" name="remetente"/>
+            <Input label="Msg" name="mensagem" size={50} />
+          </EnviarMensagem>
+          <Button mensagem="Enviar Mensagem"/>
+        </Container>
       </main>
 
-      <footer>
         <Footer/>
-      </footer>
     </div>
   );
 }
