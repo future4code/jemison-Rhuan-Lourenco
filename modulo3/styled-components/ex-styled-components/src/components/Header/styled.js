@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const HeaderPai = styled.div`
+export const HeaderPai = styled.header`
     display: flex;
     height: 10vh;
     justify-content: center;

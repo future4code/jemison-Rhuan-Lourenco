@@ -1,11 +1,11 @@
 import React from "react";
 import {ContainerPai} from './styled'
-import Input from "../Input";
 
-function Container (){
+
+function Container (props){
     return(
         <ContainerPai>
-            <Input/>
+            {props.children}
         </ContainerPai>
     )
 }
