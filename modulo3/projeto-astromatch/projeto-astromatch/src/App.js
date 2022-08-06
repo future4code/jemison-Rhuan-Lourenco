@@ -1,23 +1,32 @@
 
+import { useState } from 'react';
 import './App.css';
 import Home from './components/Home/home';
 import MatchScreen from './components/Match/match';
+import axios from 'axios';
 
 function App() {
 
-  const urlClear = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rhuan-victor-jemison/clear";
+  const [screen, setScreen] = useState("home")
 
-//   const limparMatches = () => {
-//     props.limparInfo();
-//     setMostraMatch([]);
-//   };
+  const changeMatch = () => {
+    setScreen("matchs");
+  }
 
+  const changeHome = () => {
+    setScreen("home");
+  }
 
-  return (
-    <div>
-      <Home/>
-    </div>
-  );
+  if(screen === "home") {
+    return (
+      <div>
+        <Home
+        changeMatch={changeMatch}
+        />
+      </div>
+    );
+  }
+  return <MatchScreen changeHome={changeHome} />
 }
 
 export default App;

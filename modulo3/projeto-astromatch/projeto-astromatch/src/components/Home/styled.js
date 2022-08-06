@@ -5,17 +5,19 @@ export const MainCotainer = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 
 export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
   background-color: white;
   min-width: 300px;
   max-width: 300px;
   min-height: 60%;
-
   padding: 12px;
 `
 
@@ -54,6 +56,7 @@ export const BotaoMatch = styled.button`
   background-color: white;
   border: 1px solid black;
   border-radius: 20px;
+  padding: 5px;
   cursor: pointer;
   &:hover {
     background-color: rgba(100, 100, 100, 0.5);

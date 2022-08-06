@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { MainCotainer, Card, Header, BotaoMatch, Perfil, Button, BotaoLike, BotaoDislike, DescricaoPerfil } from "./styled";
 import axios from "axios";
+import ResetButton from "../ButtonClear";
 
-function Home() {
+function Home(props) {
 
     const urlPerson = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rhuan-victor-jemison/person";
     const urlChoose = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rhuan-victor-jemison/choose-person";
@@ -39,7 +40,7 @@ function Home() {
             <Card>
                 <Header>
                     <b>AstroMatch</b>
-                    <BotaoMatch>Matches</BotaoMatch>
+                    <BotaoMatch onClick={props.changeMatch}>Matches</BotaoMatch>
                 </Header>
                 <Perfil>
                     <div>
@@ -61,6 +62,7 @@ function Home() {
                     </BotaoLike>
                 </Button>
             </Card>
+            <ResetButton />
         </MainCotainer>
     );
 };

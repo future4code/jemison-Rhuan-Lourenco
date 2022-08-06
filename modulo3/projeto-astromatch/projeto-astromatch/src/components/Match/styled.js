@@ -5,6 +5,7 @@ export const MainCotainer = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
 `
@@ -15,6 +16,7 @@ export const Card = styled.div`
   min-width: 300px;
   max-width: 300px;
   min-height: 60%;
+  max-height: 60%;
   padding: 12px;
 `
 
@@ -54,8 +56,16 @@ export const BotaoHome = styled.button`
   background-color: white;
   border: 1px solid black;
   border-radius: 20px;
+  padding: 5px;
   cursor: pointer;
   &:hover {
     background-color: rgba(100, 100, 100, 0.5);
   }
+`
+
+export const MatchCard = styled.div`
+  overflow-y: scroll;
+
+  min-height: 85%;
+  max-height: 60%;
 `
