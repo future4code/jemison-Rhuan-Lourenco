@@ -1,5 +1,6 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import {MainContainer, Home, ButtonSection, Button} from './styled'
 
 function HomePage() {
 
@@ -15,9 +16,19 @@ function HomePage() {
 
   return (
     <section>
-      <h1>HomePage</h1>
-      <button onClick={goToListTripsPage} >Lista de Viagens</button>
-      <button onClick={goToLoginPage} >Área ADM</button>
+      <MainContainer>
+        <Home>
+          <p>LabeX</p>
+        </Home>
+        <ButtonSection>
+          <Button onClick={goToListTripsPage}>
+            <b>Lista de Viagem</b>
+          </Button>
+          <Button onClick={goToLoginPage}>
+            <b>Área de Admin</b>
+          </Button>
+        </ButtonSection>
+      </MainContainer>
     </section>
   );
 }
