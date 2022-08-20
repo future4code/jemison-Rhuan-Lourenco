@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url(https://i.pinimg.com/originals/62/02/b9/6202b931f3d654284e53d6a3e8616a4a.jpg);
 `
 
 export const Header = styled.div`
@@ -13,7 +14,7 @@ export const Header = styled.div`
     padding: 20vh;
     font-size: 40px;
     font-weight: bold;
-    color: #4D4D4D;
+    color: white;
 `
 
 export const Button = styled.button`
@@ -33,15 +34,15 @@ export const Button = styled.button`
 
 export const Card = styled.div`
     padding: 40px;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 50%;
     box-shadow: 0px 8px 16px 0px;
+    background-color: lightgray;
 `
 
 export const Description = styled.div`
-    font-weight: bold;
-    color: #4D4D4D;
     margin-right: 5px;
+    font-weight: bold;
 `
 
 export const Post = styled.div`

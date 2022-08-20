@@ -1,8 +1,10 @@
 import styled from "styled-components"
 
 export const MainContainer = styled.div`
-font-family: 'Kanit', sans-serif;
-width: 100%;
+font-family: sans-serif;
+width: auto;
+height: 100vh;
+background-image: url(https://i.pinimg.com/originals/62/02/b9/6202b931f3d654284e53d6a3e8616a4a.jpg);
 `
 
 export const Home = styled.div`
@@ -10,7 +12,7 @@ text-align: center;
 padding-top: 150px;
 font-size: 40px;
 font-weight: bold;
-color: #4D4D4D;
+color: white;
 `
 
 export const ButtonSection = styled.div`

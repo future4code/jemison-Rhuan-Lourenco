@@ -1,7 +1,18 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { baseUrl } from '../../constants/constants';
+import { useForm } from '../../hooks/useForm';
+import { MainContainer, Form, Input, Button } from '../LoginPage/styled';
 
 function LoginPage() {
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token != null) {
+      goToAdminHome(navigate);
+    }
+  }, []);
 
   const navigate = useNavigate();
 
@@ -13,12 +24,58 @@ function LoginPage() {
     navigate(-1)
   }
 
+  const { form, onChange, clear } = useForm({
+    email: "",
+    password: "",
+  });
+
+  const signIn = (event) => {
+    event.preventDefault();
+
+    axios.post (`${baseUrl}/login`, form)
+    .then((response) => {
+      localStorage.setItem("token", response.data.token);
+      goToAdminHome(navigate);
+    })
+    .catch(() => {
+      alert("Você não tem permissão");
+      clear();
+    })
+  }
+
   return (
-    <section>
-      <h1>LoginPage</h1>
-      <button onClick={goToAdminHome} >Logar</button>
-      <button onClick={goToHome} >Voltar</button>
-    </section>
+    <MainContainer>
+      <Form>
+        <p>Login</p>
+        <form onSubmit={signIn}>
+
+          <div>
+            <Input
+              name={"email"}
+              value={form.email}
+              onChange={onChange}
+              placeholder={"E-mail"}
+              required
+              type={"email"}
+            />
+          </div>
+
+          <div>
+            <Input
+              name={"password"}
+              value={form.password}
+              onChange={onChange}
+              placeholder={"Senha"}
+              required
+              type={"password"}
+            />
+          </div>
+
+          <Button>Logar</Button>
+          <Button onClick={goToHome} >Voltar</Button>
+        </form>
+      </Form>
+    </MainContainer>
   );
 }
 
