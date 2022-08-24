@@ -68,7 +68,10 @@ function ApplicationFormPage() {
         <form onSubmit={submitForm}>
 
           <div>
-            <Select value={trip} onChange={onChangeTrip}>
+            <Select 
+            value={trip}
+            onChange={onChangeTrip}
+            placeholder={"Escolher Viagem"}>
               {tripList}
             </Select>
           </div>
