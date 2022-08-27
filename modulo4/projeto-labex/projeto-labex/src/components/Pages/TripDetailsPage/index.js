@@ -3,13 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthorization } from '../../hooks/useAuthorization';
 import { baseUrl } from '../../constants/constants'
-import { Card, Header } from './styled'
+import { Card, Header, MainContainer, Description, Post, Button, CardCandidate } from './styled'
 
 
 function TripDetailsPage() {
 
   const [candidates, setCandidates] = useState([]);
-  const [detailTrip, setDetailTrip] = useState({approved: []});
+  const [detailTrip, setDetailTrip] = useState({ approved: [] });
+
+  useEffect(() => {
+    tripDetail();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -17,86 +21,119 @@ function TripDetailsPage() {
     navigate("/admin/trips/list")
   }
 
-  const {id} = useParams();
+  const { id } = useParams();
 
-  const token = useAuthorization ();
+  const token = useAuthorization();
 
-  useEffect(() => {
-    tripDetail();
-  }, []);
 
   const tripDetail = () => {
-    
+
     axios.get(`${baseUrl}/trip/${id}`, {
       headers: {
         auth: token,
       }
     })
-    .then((response) => {
-      setCandidates(response.data.trip.candidates)
-      setDetailTrip(response.data.trip)
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+      .then((response) => {
+        setCandidates(response.data.trip.candidates)
+        setDetailTrip(response.data.trip)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   const decidedCandidates = detailTrip.approved.map((decide) => {
-    return <li>{decide.name}</li>
+    return (
+    <li>{decide.name}</li>
+    )
   })
 
   const showCandidates = candidates.map((candidate) => {
     return (
-      <Card>
-      <p>
-        <b>Nome:</b> {candidate.name}
-      </p>
-      <p>
-        <b>Profissão:</b> {candidate.profession}
-      </p>
-      <p>
-        <b>Idade:</b> {candidate.age}
-      </p>
-      <p>
-        <b>País:</b> {candidate.country}
-      </p>
-      <p>
-        <b>Texto de Candidatura:</b> {candidate.applicationText}
-      </p>
+      <CardCandidate>
+        <Post>
+          <Description>Nome:</Description>
+          {candidate.name}
+        </Post>
+        <Post>
+          <Description>Profissão:</Description>
+          {candidate.profession}
+        </Post>
+        <Post>
+          <Description>Idade:</Description>
+          {candidate.age}
+        </Post>
+        <Post>
+          <Description>País:</Description>
+          {candidate.country}
+        </Post>
+        <Post>
+          <Description>Texto de Candidatura:</Description>
+          {candidate.applicationText}
+        </Post>
 
-      <button>Aprovar</button>
-      <button>Reprovar</button>
-    </Card>
+        <button onClick={() => selectCandidate(candidate.id, true)} >Aprovar</button>
+        <button onClick={() => selectCandidate(candidate.id, false)} >Reprovar</button>
+
+      </CardCandidate>
     )
   })
 
-  return (
-    <div>
-    <Header>
-      {detailTrip.name}
-      <button onClick={goToAdminPage} >Voltar</button>
-    </Header>
-    <Card>
-      <p>
-        <b>Nome: </b> {detailTrip.name}
-      </p>
-      <p>
-        <b>Descrição:</b> {detailTrip.description}
-      </p>
-      <p>
-        <b>Planeta:</b> {detailTrip.planet}
-      </p>
-      <p>
-        <b>Duração:</b> {detailTrip.durationInDays}
-      </p>
-      <p>
-        <b>Data:</b> {detailTrip.date}
-      </p>
-    </Card>
+  const selectCandidate = ((candidateId, approve) => {
+    const body = {
+      approve: approve,
+    }
+    axios.put(`${baseUrl}/trips/${id}/candidates/${candidateId}/decide`, body, {
+      headers: {
+        auth: token,
+      }
+    })
+    .then((response) => {
+      tripDetail();
+      approve
+      ? alert("Seu candidato foi aprovado")
+      : alert("Seu candidato foi reprovado")
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  })
 
-    <div>{showCandidates}</div>
-    <div>{decidedCandidates}</div>
-  </div>
+  return (
+    <MainContainer>
+      <Header>
+        {detailTrip.name}
+      </Header>
+      <Card>
+        <Post>
+          <Description>Nome:</Description>
+          {detailTrip.name}
+        </Post>
+        <Post>
+          <Description>Descrição:</Description>
+          {detailTrip.description}
+        </Post>
+        <Post>
+          <Description>Planeta:</Description>
+          {detailTrip.planet}
+        </Post>
+        <Post>
+          <Description>Duração:</Description>
+          {detailTrip.durationInDays}
+        </Post>
+        <Post>
+          <Description>Data:</Description>
+          {detailTrip.date}
+        </Post>
+      </Card>
+      <Button onClick={goToAdminPage} >Voltar</Button>
+       <p>Candidatos Pendentes</p>
+      <div>
+        {candidates.length >0 ? showCandidates : 'Não há candidatos pendentes'}
+        </div>
+      <p>Candidatos Aprovados</p>
+      <div>{decidedCandidates}</div>
+    </MainContainer>
   );
 }
 

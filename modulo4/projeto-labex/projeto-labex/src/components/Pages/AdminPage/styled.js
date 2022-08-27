@@ -6,9 +6,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  height: 90vh;
   padding: 50px;
-  background-image: url(https://i.pinimg.com/originals/62/02/b9/6202b931f3d654284e53d6a3e8616a4a.jpg);
 `
 
 export const ButtonSection = styled.div`

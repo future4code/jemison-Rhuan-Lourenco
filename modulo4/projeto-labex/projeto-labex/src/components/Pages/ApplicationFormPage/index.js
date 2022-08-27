@@ -5,6 +5,7 @@ import { MainContainer, Form, Button, Input, Select } from './styled';
 import { useForm } from '../../hooks/useForm';
 import { baseUrl } from '../../constants/constants';
 import axios from 'axios';
+import { countries } from '../../constants/countries';
 
 function ApplicationFormPage() {
 
@@ -44,6 +45,7 @@ function ApplicationFormPage() {
         console.log(error)
       })
     clear();
+    setTrip("");
   }
 
   const searchTrips = () => {
@@ -60,18 +62,25 @@ function ApplicationFormPage() {
       })
   }
 
+  const countryOption = countries.map((country) => {
+    return <option key={country.nome}>{country}</option>
+  })
+
 
   return (
     <MainContainer>
       <Form>
-        <p>Inscrever-se</p>
+        
         <form onSubmit={submitForm}>
-
+        <p>Inscrever-se</p>
           <div>
             <Select 
+            name={"viagem"}
             value={trip}
             onChange={onChangeTrip}
-            placeholder={"Escolher Viagem"}>
+            required
+            >
+              <option value="" disabled>Escolha uma Viagem</option>
               {tripList}
             </Select>
           </div>
@@ -82,6 +91,7 @@ function ApplicationFormPage() {
               value={form.name}
               onChange={onChange}
               placeholder={"Nome"}
+              required
             />
           </div>
 
@@ -122,10 +132,10 @@ function ApplicationFormPage() {
               onChange={onChange}
               name={"country"}
               value={form.country}
-              // required
+              required
             >
-              <option value="">Escolha um País</option>
-
+              <option value="" disabled>Escolha um País</option>
+              {countryOption}
             </Select>
           </div>
 

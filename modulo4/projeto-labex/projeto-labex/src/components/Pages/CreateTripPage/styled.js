@@ -7,8 +7,6 @@ export const MainContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin: auto;
-    background-image: url(https://i.pinimg.com/originals/62/02/b9/6202b931f3d654284e53d6a3e8616a4a.jpg);
-    height: 100vh;
 `;
 
 export const Form = styled.div`

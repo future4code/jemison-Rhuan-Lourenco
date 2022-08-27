@@ -65,7 +65,7 @@ function CreateTripPage() {
             value={form.planet}
             required
           >
-            <option value="">Escolha um Planeta</option>
+            <option value="" disabled>Escolha um Planeta</option>
             <option>Mercúrio</option>
             <option>Vênus</option>
             <option>Terra</option>

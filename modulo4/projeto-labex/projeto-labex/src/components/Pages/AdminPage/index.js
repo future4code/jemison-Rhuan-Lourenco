@@ -4,6 +4,7 @@ import { baseUrl } from '../../constants/constants';
 import { useAuthorization } from '../../hooks/useAuthorization';
 import axios from 'axios';
 import { Card, DeleteButton, MainContainer, Text, ButtonSection, Button} from './styled'
+import { usePages } from '../../hooks/usePages'
 
 function AdminPage() {
 
@@ -11,29 +12,11 @@ function AdminPage() {
 
   const token = useAuthorization();
 
-  useAuthorization();
-
   useEffect(() => {
     cardTrip();
   }, [])
 
-  const navigate = useNavigate();
-
-  const goToCreateTrip = () => {
-    navigate("/admin/trips/create")
-  }
-
-  const goToTripDetails = () => {
-    navigate("/admin/trips/:id")
-  }
-
-  const goToLogin = () => {
-    navigate("/login")
-  }
-
-  const goToHomePage = () => {
-    navigate("/")
-  }
+  const {goToCreateTrip, goToTripDetails, goToLogin, goToHomePage} = usePages()
 
   const cardTrip = () => {
 
@@ -54,8 +37,8 @@ function AdminPage() {
       },
     })
       .then(() => {
-        tripCard();
         alert("Viagem deletada com sucesso")
+        cardTrip();
       })
       .catch((error) => {
         console.log(error.data);
@@ -63,12 +46,12 @@ function AdminPage() {
   }
 
   const tripDetail = (id) => {
-    goToTripDetails(navigate, id);
+    goToTripDetails(id);
   }
 
   const logout = () => {
     localStorage.removeItem("token");
-    goToLogin(navigate);
+    goToLogin();
   }
 
   const tripCard = tripList.map((trip) => {
@@ -86,10 +69,10 @@ function AdminPage() {
     <MainContainer>
       <Text>Painel Administrativo</Text>
       <ButtonSection>
-        <Button onClick={() => goToCreateTrip(navigate)}>
+        <Button onClick={() => goToCreateTrip()}>
           Criar Viagem
         </Button>
-        <Button onClick={() => goToHomePage(navigate)}>Voltar</Button>
+        <Button onClick={() => goToHomePage()}>Voltar</Button>
         <Button onClick={logout}>Logout</Button>
       </ButtonSection>
       {tripCard}
