@@ -7,4 +7,4 @@ Detalhe de Viagem - https://wireframe.cc/JWRHLq
 Criar Viagem - https://wireframe.cc/3MiA04
 
 LINK SURGE
-https://unwieldy-rate.surge.sh/
+https://hard-to-find-class.surge.sh/

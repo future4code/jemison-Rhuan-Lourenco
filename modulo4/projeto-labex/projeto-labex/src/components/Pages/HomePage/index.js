@@ -1,18 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import {MainContainer, Home, ButtonSection, Button} from './styled'
+import { usePages } from '../../hooks/usePages'
 
 function HomePage() {
 
-  const navigate = useNavigate();
-
-  const goToLoginPage = () => {
-    navigate("/login")
-  }
-
-  const goToListTripsPage = () => {
-    navigate("/trips/list")
-  }
+  const {goToLogin, goToListTripsPage} = usePages();
 
   return (
     <section>
@@ -24,7 +16,7 @@ function HomePage() {
           <Button onClick={goToListTripsPage}>
             <b>Lista de Viagem</b>
           </Button>
-          <Button onClick={goToLoginPage}>
+          <Button onClick={goToLogin}>
             <b>Área de Admin</b>
           </Button>
         </ButtonSection>

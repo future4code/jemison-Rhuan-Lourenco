@@ -1,13 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { MainContainer, Form, Button, Input, Select } from './styled';
 import { useForm } from '../../hooks/useForm';
 import { baseUrl } from '../../constants/constants';
 import axios from 'axios';
 import { countries } from '../../constants/countries';
+import { usePages } from '../../hooks/usePages'
 
 function ApplicationFormPage() {
+
+  const {goToListTripsPage} = usePages()
 
   useEffect(() => {
     searchTrips();
@@ -15,12 +17,6 @@ function ApplicationFormPage() {
 
   const [tripList, setTripList] = useState([]);
   const [trip, setTrip] = useState("");
-
-  const navigate = useNavigate();
-
-  const goToListTripsPage = () => {
-    navigate(-1)
-  }
 
   const { form, onChange, clear } = useForm({
     name: "",

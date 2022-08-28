@@ -1,28 +1,20 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { baseUrl } from '../../constants/constants';
 import { useForm } from '../../hooks/useForm';
 import { MainContainer, Form, Input, Button } from '../LoginPage/styled';
+import { usePages } from '../../hooks/usePages'
 
 function LoginPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token != null) {
-      goToAdminHome(navigate);
+      goToAdminHome();
     }
   }, []);
 
-  const navigate = useNavigate();
-
-  const goToAdminHome = () => {
-    navigate("/admin/trips/list")
-  }
-
-  const goToHome = () => {
-    navigate(-1)
-  }
+  const {goToAdminHome, goToHomePage} = usePages();
 
   const { form, onChange, clear } = useForm({
     email: "",
@@ -35,7 +27,7 @@ function LoginPage() {
     axios.post (`${baseUrl}/login`, form)
     .then((response) => {
       localStorage.setItem("token", response.data.token);
-      goToAdminHome(navigate);
+      goToAdminHome();
     })
     .catch(() => {
       alert("Você não tem permissão");
@@ -72,7 +64,7 @@ function LoginPage() {
           </div>
 
           <Button>Logar</Button>
-          <Button onClick={goToHome} >Voltar</Button>
+          <Button onClick={goToHomePage} >Voltar</Button>
         </form>
       </Form>
     </MainContainer>

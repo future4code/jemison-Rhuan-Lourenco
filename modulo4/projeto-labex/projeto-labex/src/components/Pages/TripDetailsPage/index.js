@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAuthorization } from '../../hooks/useAuthorization';
 import { baseUrl } from '../../constants/constants'
-import { Card, Header, MainContainer, Description, Post, Button, CardCandidate } from './styled'
-
+import { Card, Header, MainContainer, Description, Post, Button, CardCandidate, ListCandidates, ApprovedCandidates, ApprovedButton, DisapprovedButton, SectionButton } from './styled'
+import { usePages } from '../../hooks/usePages'
 
 function TripDetailsPage() {
 
@@ -15,16 +15,11 @@ function TripDetailsPage() {
     tripDetail();
   }, []);
 
-  const navigate = useNavigate();
-
-  const goToAdminPage = () => {
-    navigate("/admin/trips/list")
-  }
+  const {goToAdminHome} = usePages();
 
   const { id } = useParams();
 
   const token = useAuthorization();
-
 
   const tripDetail = () => {
 
@@ -44,7 +39,7 @@ function TripDetailsPage() {
 
   const decidedCandidates = detailTrip.approved.map((decide) => {
     return (
-    <li>{decide.name}</li>
+      <ApprovedCandidates><li>{decide.name}, {decide.age} anos</li></ApprovedCandidates>
     )
   })
 
@@ -71,10 +66,10 @@ function TripDetailsPage() {
           <Description>Texto de Candidatura:</Description>
           {candidate.applicationText}
         </Post>
-
-        <button onClick={() => selectCandidate(candidate.id, true)} >Aprovar</button>
-        <button onClick={() => selectCandidate(candidate.id, false)} >Reprovar</button>
-
+        <SectionButton>
+          <ApprovedButton onClick={() => selectCandidate(candidate.id, true)} >Aprovar</ApprovedButton>
+          <DisapprovedButton onClick={() => selectCandidate(candidate.id, false)} >Reprovar</DisapprovedButton>
+        </SectionButton>
       </CardCandidate>
     )
   })
@@ -88,15 +83,15 @@ function TripDetailsPage() {
         auth: token,
       }
     })
-    .then((response) => {
-      tripDetail();
-      approve
-      ? alert("Seu candidato foi aprovado")
-      : alert("Seu candidato foi reprovado")
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+      .then((response) => {
+        tripDetail();
+        approve
+          ? alert("Seu candidato foi aprovado")
+          : alert("Seu candidato foi reprovado")
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   })
 
   return (
@@ -126,13 +121,13 @@ function TripDetailsPage() {
           {detailTrip.date}
         </Post>
       </Card>
-      <Button onClick={goToAdminPage} >Voltar</Button>
-       <p>Candidatos Pendentes</p>
+      <Button onClick={goToAdminHome} >Voltar</Button>
+      <ListCandidates>Candidatos Pendentes</ListCandidates>
       <div>
-        {candidates.length >0 ? showCandidates : 'Não há candidatos pendentes'}
-        </div>
-      <p>Candidatos Aprovados</p>
-      <div>{decidedCandidates}</div>
+        {candidates.length > 0 ? showCandidates : 'Não há candidatos pendentes'}
+      </div>
+      <ListCandidates>Candidatos Aprovados</ListCandidates>
+      <div>{detailTrip.approved.length > 0 ? decidedCandidates : 'Não há candidatos aprovados'}</div>
     </MainContainer>
   );
 }

@@ -35,6 +35,7 @@ export const Card = styled.div`
     padding: 40px;
     margin-top: 30px;
     width: 50%;
+    border-radius: 10px;
     box-shadow: 0px 8px 16px 0px;
     background-color: lightgray;
 `

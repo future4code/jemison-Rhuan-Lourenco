@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { baseUrl } from '../../constants/constants';
 import { useAuthorization } from '../../hooks/useAuthorization';
 import axios from 'axios';

@@ -1,14 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuthorization } from "../../hooks/useAuthorization"
 import { useForm } from "../../hooks/useForm"
 import axios from 'axios';
 import {baseUrl} from "../../constants/constants"
 import { MainContainer, Form, Input, Button, Select } from "./styled"
+import { usePages } from '../../hooks/usePages'
 
 function CreateTripPage() {
 
-  const navigate = useNavigate();
+  const {goToAdminHome} = usePages();
 
   const token = useAuthorization();
   
@@ -35,10 +35,6 @@ function CreateTripPage() {
     .catch((error) => {
       console.log(error);
     })
-  }
-
-  const goToAdminHome = () => {
-    navigate("/admin/trips/list")
   }
 
   return (
@@ -114,7 +110,7 @@ function CreateTripPage() {
         </p>
 
         <Button>Criar</Button>
-        <Button onClick={() => goToAdminHome(navigate)}>Voltar</Button>
+        <Button onClick={goToAdminHome}>Voltar</Button>
       </form>
       </Form>
     </MainContainer>
