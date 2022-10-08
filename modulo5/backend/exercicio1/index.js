@@ -14,9 +14,3 @@ const temperatureConverter = (number, string) => {
         return `Erro. Parâmetro inválido (${number}).`
     }
 }
-
-console.log(temperatureConverter(30, "k"));
-console.log(temperatureConverter(30, "F"));
-console.log(temperatureConverter(30, "G"));
-console.log(temperatureConverter("trinta", "F"));
-console.log(temperatureConverter(35.5, "F"));

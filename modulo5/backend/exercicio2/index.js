@@ -1,24 +1,16 @@
 // // EXERCICIO 01 = CADASTRO CLIENTE
-// const customers = [
-//     { id: 1, nome: 'Fulano' },
-//     { id: 2, nome: 'Ciclano' },
-//     { id: 3, nome: 'Beltrano' },
-//     { id: 4, nome: 'Fulana' }
-// ]
+const customers = [
+    { id: 1, nome: 'Fulano' },
+    { id: 2, nome: 'Ciclano' },
+    { id: 3, nome: 'Beltrano' },
+    { id: 4, nome: 'Fulana' }
+]
 
-// const addCustomer = (customer) => {
-//     const lastCustomer = customers[customers.length - 1].id
-//     customers.push({ id: lastCustomer + 1, nome: customer })
-//     return customers
-// }
-
-// addCustomer('João')
-// addCustomer('rhuan')
-// addCustomer('joana')
-// addCustomer('maria')
-// addCustomer('João')
-
-// console.log(customers)
+const addCustomer = (customer) => {
+    const lastCustomer = customers[customers.length - 1].id
+    customers.push({ id: lastCustomer + 1, nome: customer })
+    return customers
+}
 
 // //EXERCICIO 02 = GERADOR DE TABUADA
 
@@ -38,9 +30,3 @@ const multiplier = (number) => {
     }
 
 }
-
-multiplier(5)
-multiplier("10")
-multiplier(50)
-
-console.log(multiplicationTable)
