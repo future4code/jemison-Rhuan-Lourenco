@@ -7,12 +7,17 @@ const users =  [
 	{name: "Carina", email: "carina@email.com", role: "admin"}      
 ] 
 
-type typeUsers = {
+type TypeUsers = {
     name: string,
     email: string,
     role: string
 }
 
-function searchAdmin () {
-
+function searchAdmin(users : TypeUsers[]) : string[] {
+    const adminUsers : TypeUsers[] = users.filter((atual) => {
+        return atual.role === "admin"
+    })
+	return adminUsers.map((current) => {
+		return current.email
+	})
 }
