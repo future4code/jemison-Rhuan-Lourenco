@@ -1,0 +1,28 @@
+
+### EXERCICIO 01
+GET http://localhost:3003/users
+Content-Type: application/json
+
+### EXERCICIO 02
+GET http://localhost:3003/users/:type
+Content-Type: application/json
+
+### EXERCICIO 03
+GET http://localhost:3003/users?name=Alice
+Content-Type: application/json
+
+### EXERCICIO 04
+POST http://localhost:3003/users/create
+Content-Type: application/json
+
+### EXERCICIO 05
+PUT http://localhost:3003/users/edituser
+Content-Type: application/json
+
+### EXERCICIO 06
+PATCH http://localhost:3003/users/edit
+Content-Type: application/json
+
+### EXERCICIO 07
+DELETE http://localhost:3003/users/:id
+Content-Type: application/json
